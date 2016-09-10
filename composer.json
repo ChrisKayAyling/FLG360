@@ -1,0 +1,15 @@
+{
+    "name": "ck/flg360",
+    "description": "FLG360 API PHP Framework",
+    "type": "library",
+    "authors": [
+        {
+            "name": "Chris Kay-Ayling",
+            "email": "ck@xenn.co.uk"
+        }
+    ],
+
+    "autoload": {
+	"classmap": ["flg360.php"]
+    }
+}
