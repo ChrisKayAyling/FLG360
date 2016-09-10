@@ -1,4 +1,5 @@
 <?php
+namespace FLG360;
 
 class flg360
 {
