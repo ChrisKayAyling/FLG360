@@ -344,11 +344,6 @@ class flg360
             return FALSE;
         }
 
-        if (!$this->address2) {
-            $this->errors[] = "Address2 not specified.";
-            return FALSE;
-        }
-
         if (!$this->towncity) {
             $this->errors[] = "Towncity not specified.";
             return FALSE;
