@@ -133,6 +133,7 @@ class flg360
     public $xml;
 
 
+    public $errors = array();
 
     public function __construct() {
         // Nothing yet
@@ -152,10 +153,11 @@ class flg360
             if ($xml) {
                 return $this->sendRequest($xml);
             } else {
+                $this->errors[] = "Could not construct XML Request, constructor returned FALSE.";
                 return FALSE;
             }
         } else {
-
+            $this->errors[] = "Field check returned FALSE.";
             return FALSE;
         }
     }
@@ -308,42 +310,52 @@ class flg360
      */
     private function checkFieldsCreateLead() {
         if (!$this->leadgroup) {
+            $this->errors[] = "Lead group not specified.";
             return FALSE;
         }
 
         if (!$this->title) {
+            $this->errors[] = "Title not specified.";
             return FALSE;
         }
 
         if (!$this->firstname) {
+            $this->errors[] = "Firstname not specified.";
             return FALSE;
         }
 
         if (!$this->lastname) {
+            $this->errors[] = "Lastname not specified.";
             return FALSE;
         }
 
         if (!$this->phone1) {
+            $this->errors[] = "Phone1 not specified.";
             return FALSE;
         }
 
         if (!$this->email) {
+            $this->errors[] = "Email not specified.";
             return FALSE;
         }
 
         if (!$this->address1) {
+            $this->errors[] = "Address1 not specified.";
             return FALSE;
         }
 
         if (!$this->address2) {
+            $this->errors[] = "Address2 not specified.";
             return FALSE;
         }
 
         if (!$this->towncity) {
+            $this->errors[] = "Towncity not specified.";
             return FALSE;
         }
 
         if (!$this->postcode) {
+            $this->errors[] = "Postcode not specified.";
             return FALSE;
         }
 
