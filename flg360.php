@@ -21,35 +21,131 @@ class flg360
     public $reference;
     public $source;
     public $medium;
+
+    /**
+     * @var $term
+     */
     public $term;
+
+    /**
+     * @var $cost;
+     */
     public $cost;
+
+    /**
+     * @var $value;
+     */
     public $value;
+
+    /**
+     * @var $title;
+     */
     public $title;
+
+    /**
+     * @var $firstname
+     */
     public $firstname;
+
+    /**
+     * @var $lastname
+     */
     public $lastname;
+
+    /**
+     * @var $company
+     */
     public $company;
+
+    /**
+     * @var $jobtitle
+     */
     public $jobtitle;
+
+    /**
+     * @var $phone1
+     */
     public $phone1;
+
+    /**
+     * @var $phone2
+     */
     public $phone2;
+
+    /**
+     * @var $fax
+     */
     public $fax;
+
+    /**
+     * @var $email
+     */
     public $email;
+
+    /**
+     * @var $address1
+     */
     public $address1;
+
+    /**
+     * @var $address2
+     */
     public $address2;
+
+    /**
+     * @var $towncity
+     */
     public $towncity;
+
+    /**
+     * @var $postcode
+     */
     public $postcode;
+
+    /**
+     * @var $dobday
+     */
     public $dobday;
+
+    /**
+     * @var $dobmonth
+     */
     public $dobmonth;
+
+    /**
+     * @var $dobyear
+     */
     public $dobyear;
+
+    /**
+     * @var $contacttime
+     */
     public $contacttime;
 
+    /**
+     * @var array $customFields
+     */
     public $customFields = array();
+
+    /**
+     * @var $xml
+     */
+    public $xml;
 
 
 
     public function __construct() {
-
+        // Nothing yet
     }
 
+    /**
+     * createLead()
+     *
+     * Create a lead, check fields and send XML request,
+     *
+     * Successful call will return json array, Failure will return FALSE, field check will return FALSE.
+     * @return bool|mixed
+     */
     public function createLead() {
         if (TRUE == $this->checkFieldsCreateLead()) {
             $xml = $this->constructCreateRequest();
@@ -192,9 +288,17 @@ class flg360
         return $xml;
     }
 
-
+    /**
+     * readLead()
+     *
+     * To be implemented
+     *
+     * @return bool
+     */
     public function readLead() {
 
+        // To be implemented
+        return FALSE;
     }
 
 
@@ -246,14 +350,36 @@ class flg360
         return TRUE;
     }
 
+    /**
+     * checkFieldsReadLead()
+     *
+     * To be implemented
+     *
+     * @return bool
+     */
     private function checkFieldsReadLead() {
-
+        return FALSE;
     }
 
+    /**
+     * checkFieldsUpdateLead()
+     *
+     * To be implemented
+     *
+     * @return bool
+     */
     private function checkFieldsUpdateLead() {
-
+        return FALSE;
     }
 
+    /**
+     * sendRequest()
+     *
+     * xml request
+     *
+     * @param $xml
+     * @return mixed
+     */
     private function sendRequest($xml) {
 
 
@@ -265,7 +391,6 @@ class flg360
         curl_setopt($ch, CURLOPT_CONNECTTIMEOUT, 300);
 
         $data = curl_exec($ch);
-        die(Var_Export($data,true));
         curl_close($ch);
         return json_decode(json_encode(simplexml_load_string($data)), true);
     }
