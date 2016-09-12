@@ -51,7 +51,7 @@ class flg360
     }
 
     public function createLead() {
-        if ($this->checkFieldsCreateLead()) {
+        if (TRUE == $this->checkFieldsCreateLead()) {
             $xml = $this->constructCreateRequest();
             if ($xml) {
                 return $this->sendRequest($xml);
@@ -59,6 +59,7 @@ class flg360
                 return FALSE;
             }
         } else {
+
             return FALSE;
         }
     }
@@ -68,7 +69,7 @@ class flg360
      * @return string
      */
     private function constructCreateRequest() {
-        $xml = "";
+        $xml = "<?xml version=\"1.0\" encoding=\"ISO-8859-1\"?>";
 
         $xml .= "<data>\n";
         $xml .= "<lead>\n";
@@ -179,14 +180,15 @@ class flg360
             $xml .= "<contacttime>" . $this->contacttime . "</contacttime>\n";
         }
 
-        $i = 1;
-        foreach ($this->customFields as $field) {
-            $xml .= "<data" . $i . ">" . $field . "</data" . $i . ">";
+
+        foreach ($this->customFields as $key => $value) {
+            $xml .= "<data" . $key . ">" . $value . "</data" . $key . ">";
         }
 
         $xml .= "</lead>\n";
         $xml .= "</data>";
 
+        $this->xml = $xml;
         return $xml;
     }
 
@@ -217,14 +219,6 @@ class flg360
             return FALSE;
         }
 
-        if (!$this->company) {
-            return FALSE;
-        }
-
-        if (!$this->jobtitle) {
-            return FALSE;
-        }
-
         if (!$this->phone1) {
             return FALSE;
         }
@@ -249,8 +243,6 @@ class flg360
             return FALSE;
         }
 
-
-
         return TRUE;
     }
 
@@ -263,13 +255,17 @@ class flg360
     }
 
     private function sendRequest($xml) {
+
+
         $ch = curl_init();
         curl_setopt($ch, CURLOPT_URL, $this->ServiceEndPoint);
-        curl_setopt($ch, CURLOPT_POSTFIELDS, "xmlRequest=" . $xml);
+        curl_setopt($ch, CURLOPT_HTTPHEADER, array("Content-Type: application/xml; charset=utf-8"));
+        curl_setopt($ch, CURLOPT_POSTFIELDS, $xml);
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
         curl_setopt($ch, CURLOPT_CONNECTTIMEOUT, 300);
 
         $data = curl_exec($ch);
+        die(Var_Export($data,true));
         curl_close($ch);
         return json_decode(json_encode(simplexml_load_string($data)), true);
     }
