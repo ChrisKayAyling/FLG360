@@ -1,7 +1,7 @@
-DB2
+FLG360
 ===
 
-An Lightweight Open Source MySQLi wrapper to replace MDB2
+A lib for interfacing with FLG360 Lead management online service.
 
 ## Installing
 
@@ -10,9 +10,10 @@ to your composer.json file.
 
 ## Requirements
 
-* PHP 5.4
-* MySQL PHP Package
-* 
+* PHP
+* CURL
+* JSON Extensions
+* simplexml
 
 ## Author
 
