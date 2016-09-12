@@ -314,10 +314,10 @@ class flg360
             return FALSE;
         }
 
-        if (!$this->title) {
+        /*if (!$this->title) {
             $this->errors[] = "Title not specified.";
             return FALSE;
-        }
+        }*/
 
         if (!$this->firstname) {
             $this->errors[] = "Firstname not specified.";
