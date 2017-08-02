@@ -339,21 +339,6 @@ class flg360
             return FALSE;
         }
 
-        if (!$this->address1) {
-            $this->errors[] = "Address1 not specified.";
-            return FALSE;
-        }
-
-        if (!$this->towncity) {
-            $this->errors[] = "Towncity not specified.";
-            return FALSE;
-        }
-
-        if (!$this->postcode) {
-            $this->errors[] = "Postcode not specified.";
-            return FALSE;
-        }
-
         return TRUE;
     }
 
