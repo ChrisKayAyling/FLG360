@@ -123,6 +123,26 @@ class flg360
     public $contacttime;
 
     /**
+     * @var
+     */
+    public $contactphone;
+
+    /**
+     * @var
+     */
+    public $contactsms;
+
+    /**
+     * @var
+     */
+    public $contactemail;
+
+    /**
+     * @var
+     */
+    public $contactmail;
+
+    /**
      * @var array $customFields
      */
     public $customFields = array();
@@ -277,6 +297,11 @@ class flg360
         if ($this->contacttime) {
             $xml .= "<contacttime>" . $this->contacttime . "</contacttime>\n";
         }
+
+        $xml .= "<contactphone>yes</contactphone>";
+        $xml .= "<contactsms>yes</contactsms>";
+        $xml .= "<contactemail>yes</contactemail>";
+        $xml .= "<contactmail>yes</contactmail>";
 
 
         foreach ($this->customFields as $key => $value) {
