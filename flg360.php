@@ -180,6 +180,10 @@ class flg360
      */
     protected function searchLeadsContruct($StartDate, $EndDate, $Page, $PerPage) {
         $xml = "<?xml version=\"1.0\" encoding=\"ISO-8859-1\"?>";
+        $xml .= "<data>\n";
+        $xml .= "<key>" . $this->key . "</key>\n";
+        $xml .= "<request>search</request>\n";
+
         $xml .= "<startdate>" . $StartDate . "</startdate>\n";
         $xml .= "<enddate>" . $EndDate . "</enddate>\n";
 
@@ -191,6 +195,7 @@ class flg360
             $xml .= "<perpage>" . $PerPage . "</perpage>";
         }
 
+        $xml .= "</data>";
         $this->xml = $xml;
         return $xml;
 
