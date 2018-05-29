@@ -159,6 +159,43 @@ class flg360
         // Nothing yet
     }
 
+
+    /**
+     * @param $StartDate e.g. "01/01/2014"
+     * @param $EndDate e.g. "31/01/2014"
+     * @param $Page e.g. 1
+     * @param $PerPage e.g. 10,25,50,100 or 1000
+     */
+    public function searchLeads($StartDate, $EndDate, $Page, $PerPage) {
+        $xml = $this->searchLeadsContruct($StartDate, $EndDate, $Page, $PerPage);
+        return $this->sendRequest($xml);
+
+    }
+
+    /**
+     * @param $StartDate e.g. "01/01/2014"
+     * @param $EndDate e.g. "31/01/2014"
+     * @param $Page e.g. 1
+     * @param $PerPage e.g. 10,25,50,100 or 1000
+     */
+    protected function searchLeadsContruct($StartDate, $EndDate, $Page, $PerPage) {
+        $xml = "<?xml version=\"1.0\" encoding=\"ISO-8859-1\"?>";
+        $xml .= "<startdate>" . $StartDate . "</startdate>\n";
+        $xml .= "<enddate>" . $EndDate . "</enddate>\n";
+
+        if (isset($Page)) {
+            $xml .= "<page>" . $Page . "</page>\n";
+        }
+
+        if (isset($PerPage)) {
+            $xml .= "<perpage>" . $PerPage . "</perpage>";
+        }
+
+        $this->xml = $xml;
+        return $xml;
+
+    }
+
     /**
      * createLead()
      *
