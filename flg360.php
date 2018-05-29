@@ -202,6 +202,25 @@ class flg360
     }
 
     /**
+     * @param $ID
+     * @return mixed
+     */
+    public function updateLead($ID) {
+        $xml = "<?xml version=\"1.0\" encoding=\"ISO-8859-1\"?>";
+        $xml .= "<data>\n";
+        $xml .= "<key>" . $this->key . "</key>\n";
+        $xml .= "<Id>" . $ID . "</Id>\n";
+        $xml .= "<Contactphone>yes</Contactphone>\n";
+        $xml .= "<Contactsms>yes</Contactsms>\n";
+        $xml .= "<Contactemail>yes</Contactemail>\n";
+        $xml .= "<Contactmail>yes</Contactmail>\n";
+        $xml .= "<Contactfax>yes</Contactfax>\n";
+        $xml .= "</data>";
+
+        return $this->sendRequest($xml);
+    }
+
+    /**
      * createLead()
      *
      * Create a lead, check fields and send XML request,
