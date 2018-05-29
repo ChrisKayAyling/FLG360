@@ -210,11 +210,10 @@ class flg360
         $xml .= "<data>\n";
         $xml .= "<key>" . $this->key . "</key>\n";
         $xml .= "<Id>" . $ID . "</Id>\n";
-        $xml .= "<Contactphone>yes</Contactphone>\n";
-        $xml .= "<Contactsms>yes</Contactsms>\n";
-        $xml .= "<Contactemail>yes</Contactemail>\n";
-        $xml .= "<Contactmail>yes</Contactmail>\n";
-        $xml .= "<Contactfax>yes</Contactfax>\n";
+        $xml .= "<contactphone>yes</contactphone>";
+        $xml .= "<contactsms>yes</contactsms>";
+        $xml .= "<contactemail>yes</contactemail>";
+        $xml .= "<contactmail>yes</contactmail>";
         $xml .= "</data>";
 
         return $this->sendRequest($xml);
