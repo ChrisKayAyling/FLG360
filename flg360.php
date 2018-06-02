@@ -208,12 +208,14 @@ class flg360
     public function updateLead($ID) {
         $xml = "<?xml version=\"1.0\" encoding=\"ISO-8859-1\"?>";
         $xml .= "<data>\n";
+        $xml .= "<lead>\n";
         $xml .= "<key>" . $this->key . "</key>\n";
         $xml .= "<Id>" . $ID . "</Id>\n";
         $xml .= "<contactphone>yes</contactphone>";
         $xml .= "<contactsms>yes</contactsms>";
         $xml .= "<contactemail>yes</contactemail>";
         $xml .= "<contactmail>yes</contactmail>";
+        $xml .= "</lead>\n";
         $xml .= "</data>";
 
         return $this->sendRequest($xml);
